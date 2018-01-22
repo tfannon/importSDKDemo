@@ -18,12 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-//        FirebaseApp.configure()
-//        Auth.auth().signInAnonymously() { (user, error) in
-//            if (error != nil) {
-//                fatalError("Problem authenticating to Firebase \(String(describing: error))")
-//            }
-//        }
+        FirebaseApp.configure()
+        Auth.auth().signInAnonymously() { (user, error) in
+            if (error != nil) {
+                fatalError("Problem authenticating to Firebase \(String(describing: error))")
+            }
+        }
         return true
     }
 

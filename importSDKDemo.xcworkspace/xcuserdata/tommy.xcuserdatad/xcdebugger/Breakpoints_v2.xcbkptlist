@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "importSDKDemo/ViewController.swift"
-            timestampString = "538269560.250437"
+            timestampString = "538290776.382437"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "appRegisteredWithError(_:)"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "productConnected(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +26,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "importSDKDemo/ViewController.swift"
-            timestampString = "538269576.443077"
+            timestampString = "538290776.3826849"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "productConnected(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in importSDKDemo.ViewController.productConnected(Swift.Optional&lt;__ObjC.DJIBaseProduct&gt;) -&gt; ()"
+                  moduleName = "importSDKDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tommy/Dev/importSDKDemo/importSDKDemo/ViewController.swift"
+                  timestampString = "538290776.411124"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__ObjC.DataSnapshot) -&gt; () in closure #1 () -&gt; () in importSDKDemo.ViewController.productConnected(Swift.Optional&lt;__ObjC.DJIBaseProduct&gt;) -&gt; ()"
+                  moduleName = "importSDKDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tommy/Dev/importSDKDemo/importSDKDemo/ViewController.swift"
+                  timestampString = "538290776.412641"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "importSDKDemo/ViewController.swift"
+            timestampString = "538290799.474159"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "showAlertViewWith(title:message:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

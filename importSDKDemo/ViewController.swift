@@ -16,6 +16,7 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIFlightControll
     var dbref : DatabaseReference!
     let locationManager = CLLocationManager()
     var userLocation: CLLocationCoordinate2D??
+    var flightController: DJIFlightController!
     
     @IBAction func coordinatesClicked(_ sender: Any) {
         print ("doItClicked")
@@ -36,21 +37,29 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIFlightControll
         var msg = "Register succeeded"
         if (error != nil) {
             msg = "Register failed"
-            //self.showAlertViewWith(title: "Register App", message: msg)
+            self.showAlertViewWith(title: "Register App", message: msg)
         }
         else {
             //self.showAlertViewWith(title: "Register App", message: msg)
             //print ("startConnectionToProduct called")
             DJISDKManager.startConnectionToProduct()
-            
         }
     }
     
     
     func productConnected(_ product: DJIBaseProduct?) {
-        if let product = DJISDKManager.product() as? DJIAircraft {
-            if let flightController = product.flightController {
-                self.showAlertViewWith(title: "Register App", message: "flightController obtained")
+        if self.flightController != nil {
+            return
+        }
+        if let product = DJISDKManager.product() as? DJIAircraft,
+            product.flightController != nil {
+            self.flightController = product.flightController
+            self.showAlertViewWith(title: "Register App", message: "flightController obtained") {
+                self.dbref.child("tommyScratch").observe(DataEventType.value, with: { (snapshot) in
+                    if let value = snapshot.value as? String {
+                        self.showAlertViewWith(title: "Beacon change", message: value)
+                    }
+                })
             }
         }
         else {
@@ -66,44 +75,27 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIFlightControll
     }
 
     
-    func showAlertViewWith(title: String, message: String) {
+    func showAlertViewWith(title: String, message: String, completion: (() -> ())? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(okAction)
-        self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: completion)
     }
     
     func registerApp() {
         DJISDKManager.registerApp(with: self)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        //self.registerApp()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.locationManager.requestAlwaysAuthorization()
-
-//        self.dbref = Database.database().reference()
-//        dbref.child("leaderCoordinates").observe(DataEventType.value, with: { (snapshot) in
-//            let value = snapshot.value as? String
-//            print(value)
-//            //self.debugInfo[0].value = value as? String ?? "error"
-//            //self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: UITableViewRowAnimation.none)
-//        })
-        
+        self.dbref = Database.database().reference()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.distanceFilter = 0.1
             locationManager.startUpdatingLocation()
         }
-        
-        
-
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func viewDidAppear(_ animated: Bool) {
